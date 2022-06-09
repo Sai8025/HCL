@@ -1,0 +1,8 @@
+version: "3.8"
+services: 
+ saiapp1: # name of app which can be anything 
+  image: saihcl:appv1 # name of iamge i want to build
+  build: . # location of dockerfile 
+  container_name: saic111
+  ports:
+  - 1350:80
