@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: saifinal-deploy
+  name: saifinal-deploy
+  namespace: sai-project
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: saifinal-deploy
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: saifinal-deploy
+    spec:
+      containers:
+      - image: sai995/saihcl:appfinal
+        name: saihcl
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always
+        resources: {}
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: saifinal-deploy
+  name: sailb1234
+  namespace: sai-project
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: saifinal-deploy
+  type: NodePort
+status:
+  loadBalancer: {}
+
